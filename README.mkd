@@ -13,11 +13,11 @@ a ZeroMQ message bus:
 
 
 
-----------------              ----- Pixel Logger ---- MongoDB
-|              |  pub/sub     |
-| Pixel Server |------------------- Pixel Display --- Web Browser
-|              |              |
-----------------              ----- Pixel Display --- Web Browser
+	----------------              ----- Pixel Logger ---- MongoDB
+	|              |  pub/sub     |
+	| Pixel Server |------------------- Pixel Display --- Web Browser
+	|              |              |
+	----------------              ----- Pixel Display --- Web Browser
 
 
 Setup
