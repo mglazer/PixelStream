@@ -1,0 +1,80 @@
+Pixel Stream
+============
+
+
+This is a very simple test project to exercise some of the abilities (and really
+to just learn about the abilities) of ZeroMQ. It's envisioning what an ad or 
+traffic collection service would look like if it was designed today. A lot of it
+is hacky, but just ignore those bits for now, it'll improve with age.
+
+
+There's 3 main components to this system, all connected to each other through
+a ZeroMQ message bus:
+
+
+
+----------------              ----- Pixel Logger ---- MongoDB
+|              |  pub/sub     |
+| Pixel Server |------------------- Pixel Display --- Web Browser
+|              |              |
+----------------              ----- Pixel Display --- Web Browser
+
+
+Setup
+-----
+
+You can install all of the required dependencies using [bundler](http://gembundler.com):
+
+	% bundle install
+
+You'll also need to install [MongoDB](http://www.mongodb.org) and [ZeroMQ](http://www.zeromq.org).
+If you're on a Mac, then these are easily installed with [Homebrew](http://mxcl.github.com/homebrew/):
+
+	% brew install mongodb
+	% brew install zmq
+	
+
+Running
+-------
+
+You'll need to start all 3 services to get the full effect of this demo. First, start
+the pixel server:
+
+	% cd PixelServer
+	% ./pixelserver.rb
+	
+Then, start the pixel logger (mongo should also be started at this point):
+
+	% cd PixelLogger
+	% ./pixel-logger.rb
+	
+Then, start the pixel display:
+
+	% cd PixelDisplay
+	% ./pixel-display.rb -p 4568
+	
+I like to use [htty](https://github.com/htty/htty) for interacting with web services
+but you're free to use cURL as well (which is always installed and easy to use). Open
+your web browser to:
+
+	http://localhost:4568
+
+You'll see a screen, containing a large map and a table below it (excuse the
+lack of CSS markup to make it look pretty). Now, start hitting pixels:
+
+	curl http://localhost:4567/pixel.gif
+
+You should start seeing red dots appearing on the screen, and table entries will
+start appearing. If you reload the page, those entries will be loaded again.
+
+
+Contact
+-------
+
+Questions? Improvements? Of course there will be...this was just a test program.
+
+mike.glazer@gmail.com
+
+
+
+

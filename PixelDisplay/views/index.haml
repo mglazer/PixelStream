@@ -1,0 +1,24 @@
+%script{:type => "text/javascript", 
+        :src => "/js/jquery.min.js"}
+%script{:type => "text/javascript",
+        :src => "/js/pixel-display.js"}
+%link{:rel => "stylesheet", :type=>"text/css", :href=>"/css/style.css"}
+
+
+%h1 Pixel Logs
+
+#globalmap
+  %img{:src => '/images/globalmap.jpg'}
+
+
+%table#logs
+  %thead
+    %tr
+      %th Timestamp
+      %th IP
+      %th User Agent
+      %th Position (lon,lat)
+  %tbody#logbody
+
+
+
